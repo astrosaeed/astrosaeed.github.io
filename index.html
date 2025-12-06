@@ -32,18 +32,19 @@
               <p style="text-align:center">
                 <name>Saeid Amiri</name>
               </p>
-              <p>I am PhD student at <a href="http://robotics.cs.binghamton.edu/" _target="bkank">AIR Lab</a>, SUNY Binghamton,  where I work on  knoweldge-based robotics sequential decision making algorithms. More specifically, I am interested in leveraging commonsense knowledge in POMDPs and Reinforcement Learning. 
+              <p>I am research scientist at<a href = "https://www.jpmorganchase.com/about/technology/research/ai"> JP Morgan AI research</a> working at the intersection of AI and Finance.
+                 Previously, I was a student at <a href="http://robotics.cs.binghamton.edu/" _target="blank">AIR Lab</a>, SUNY Binghamton,  working in the AIR lab focusing on
+                  knowledge-based robotics sequential decision making algorithms under the supervision of Shiqi Zhang. 
+                  More specifically, I am interested in leveraging commonsense knowledge in POMDPs, Reinforcement Learning, and combinatorial optimization. 
               </p>
-              <p> 
-                I am also a research educator for the <a href="https://www.binghamton.edu/first-year-research-immersion/index.html" _target="bkank">Freshman Research Immersion (FRI)</a>  program, where I teach first-year students and mentor their AI research projects. Previously, I did an internship with ABB Robotics on vision-based deep RL. I got my Masters and Bachelors in Mechanical Engineering with a focus on control theory.
-              </p>
+            
               <p style="text-align:center">
-                <a href="mailto:samiri1@binghamton.edu" _target="bkank">Email</a> &nbsp/&nbsp
+                <a href="mailto:samiri1@binghamton.edu" _target="blank">Email</a> &nbsp/&nbsp
                 <!--<a href="data/JonBarron-CV.pdf">CV</a> &nbsp/&nbsp
                 <a href="data/JonBarron-bio.txt">Bio</a> &nbsp/&nbsp -->
-                <a href="https://scholar.google.com/citations?user=zOfE-oUAAAAJ&hl=en" _target="bkank">Google Scholar</a> &nbsp/&nbsp
-              <!--  <a href="https://twitter.com/astrosaeed" _target="bkank">Twitter</a> &nbsp/&nbsp -->
-                <a href="https://github.com/astrosaeed/" _target="bkank">Github</a>
+                <a href="https://scholar.google.com/citations?user=zOfE-oUAAAAJ&hl=en" target="_blank">Google Scholar</a> &nbsp/&nbsp
+              <!--  <a href="https://twitter.com/astrosaeed" target="_blank">Twitter</a> &nbsp/&nbsp -->
+                <a href="https://github.com/astrosaeed/" target="_blank">Github</a>
               </p>
             </td>
             <td style="padding:2.5%;width:40%;max-width:40%">
@@ -56,7 +57,9 @@
             <td style="padding:20px;width:100%;vertical-align:middle">
               <heading>Research</heading>
               <p>
-                I'm interested in AI symbolic planning under uncertainty and Reinforcement Learning. Much of my research is about developing sequential decision making frameworks under partial observability. Representative papers are <span class="highlight">highlighted</span>.
+                I'm interested in AI symbolic planning under uncertainty and Reinforcement Learning.
+                 Much of my research is about developing sequential decision making frameworks under partial observability.
+                  Representative papers are <span class="highlight">highlighted</span>.
               </p>
             </td>
           </tr>
@@ -64,8 +67,276 @@
           
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+
+
+
+
+          <tr onmouseout="socs_stop()" onmouseover="socs_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+                 
+              <div class="one">
+                  
+                <div class="two" id='socs_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/socs.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/socs.JPG' width="140" style="float: left;padding: 34px 0px 0px 0px">
+                  
+              </div>
+
+                
+             
+              <script type="text/javascript">
+                function socs_start() {
+                  document.getElementById('socs_image').style.opacity = "1";
+                }
+
+                function socs_stop() {
+                  document.getElementById('socs_image').style.opacity = "0";
+                }
+                socs_stop()
+              </script>
+            </td>
+
+            <td style="padding:20px;width:75%;vertical-align:middle">
+            
+              <a href="https://ojs.aaai.org/index.php/SOCS/article/download/36001/38156" target="_blank">
+              <papertitle>Surrogate-Assisted Monte-Carlo Tree Search in Facility Location and Beyond</papertitle>
+              </a>
+              <br>
+                <strong>Saeid Amiri</strong>, Danial Dervovic, Michael Cashmore, 
+              
+              
+              <br>
+              <em>SOCS</em>, 2025 
+              <br>
+              <a href="https://ojs.aaai.org/index.php/SOCS/article/download/36001/38156" target="_blank">paper</a>
+              <p>Using Surrogates to speedup MCTS in combinatorial optimization</p>
+            </td>
+          </tr>
+          
+
+
+
+
+
+
+          <tr onmouseout="dkprompt_stop()" onmouseover="dkprompt_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+                
+              <div class="one">
+                  
+                <div class="two" id='dkprompt_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/dkprompt.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/dkprompt.JPG' width="160" style="float: left;padding: 30px 0px 0px 0px">
+                  
+              </div>
+              <script type="text/javascript">
+                function dkprompt_start() {
+                  document.getElementById('dkprompt_image').style.opacity = "1";
+                }
+
+                function dkprompt_stop() {
+                  document.getElementById('dkprompt_image').style.opacity = "0";
+                }
+                dkprompt_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://arxiv.org/pdf/2406.17659?" target="_blank">
+                <papertitle>DKPROMPT: Domain Knowledge Prompting
+                          Vision-Language Models for Open-World Planning </papertitle>
+              </a>
+              <br>
+							Xiaohan Zhang, Zainab Altawel, Yohei Hayamizu, Yan Ding, <strong>Saeid Amiri</strong>, Hao Yang, Andy Kaminski, Chad Esselink, Shiqi Zhang
+							
+				<br>			              <br>
+              <em>ICRA Workshop maybe </em>, 2024 
+              <br>
+              <a href="https://arxiv.org/pdf/2406.17659?" target="_blank">paper</a>
+              / 
+              <a href="https://dkprompt.github.io" target="_blank">webpage</a> 
+                <p>Vision-language models (VLMs) have been applied to robot task planning problems</p>
+            </td>
+          </tr> 
+
+
+
+
+
+
             
             
+          <tr onmouseout="peril_stop()" onmouseover="peril_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+                 
+              <div class="one">
+                  
+                <div class="two" id='peril_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/peril.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/peril.JPG' width="140" style="float: left;padding: 34px 0px 0px 0px">
+                  
+              </div>
+
+                
+             
+              <script type="text/javascript">
+                function peril_start() {
+                  document.getElementById('peril_image').style.opacity = "1";
+                }
+
+                function peril_stop() {
+                  document.getElementById('peril_image').style.opacity = "0";
+                }
+                peril_stop()
+              </script>
+            </td>
+
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://proceedings.mlr.press/v216/cui23a/cui23a.pdf" target="_blank">
+              <papertitle>Learning to reason about contextual knowledge for planning under uncertainty
+</papertitle>
+              </a>
+              <br>
+                Cheng Cui, <strong>Saeid Amiri</strong>, Yan Ding, Xingyue Zhan, 
+              <a href="http://www.cs.binghamton.edu/~szhang/" _target="blank">Shiqi Zhang</a><br>
+              
+              <br>
+              <em>UAI</em>, 2023 
+              <br>
+              <a href="https://proceedings.mlr.press/v216/cui23a/cui23a.pdf" target="_blank">paper</a>
+              /
+              <a href="https://drive.google.com/file/d/1DM1B4Js9qFo6SiXR2i1TmgAOEFttgibK/view">Video presentation</a>
+                
+                /
+                <a href="https://docs.google.com/presentation/d/1FMYLtpCtQ-Rimxi-99IqetsMG951YFnQF98S0GH9HXg/edit?usp=sharing" target="_blank">slides</a>
+              /
+                <a href="https://www.auai.org/uai2023/posters/281.pdf" _target="blank">poster</a>
+              <p>Using supervised learning and automated reasoning to guide a POMDP-based symbolic planner</p>
+            </td>
+          </tr>
+          
+        
+            
+            
+          <tr onmouseout="vdr_stop()" onmouseover="vdr_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+                
+              <div class="one">
+                  
+                <div class="two" id='vdr_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/vdr.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/vdr.JPG' width="160" style="float: left;padding: 30px 0px 0px 0px">
+                  
+              </div>
+              <script type="text/javascript">
+                function vdr_start() {
+                  document.getElementById('vdr_image').style.opacity = "1";
+                }
+
+                function vdr_stop() {
+                  document.getElementById('vdr_image').style.opacity = "0";
+                }
+                vdr_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://icaps23.icaps-conference.org/papers/finplan/FinPlan23_paper_2.pdf" target="_blank">
+                <papertitle>Value Detection Rate: A Performance Metric for Payments Fraud Detection </papertitle>
+              </a>
+              <br>
+							Danial Dervovic
+							<strong>Saeid Amiri</strong>, 
+							Michael Cashmore
+				<br>			              <br>
+              <em>ICAPS FinPlan </em>, 2023 
+              <br>
+              <a href="https://icaps23.icaps-conference.org/papers/finplan/FinPlan23_paper_2.pdf" target="_blank">paper</a>
+               
+                <p>A metric for evaluating fraud detection system performance.</p>
+            </td>
+          </tr> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr onmouseout="cowp_stop()" onmouseover="cowp_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+                
+              <div class="one">
+                  
+                <div class="two" id='cowp_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/COWP_demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/cowp.jpg' width="160" style="float: left;padding: 30px 0px 0px 0px">
+                  
+              </div>
+              <script type="text/javascript">
+                function cowp_start() {
+                  document.getElementById('cowp_image').style.opacity = "1";
+                }
+
+                function cowp_stop() {
+                  document.getElementById('cowp_image').style.opacity = "0";
+                }
+                cowp_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://arxiv.org/abs/2305.17590" target="_blank">
+                <papertitle>Integrating Action Knowledge and LLMs for Task Planning and Situation Handling
+                            in Open Worlds</papertitle>
+              </a>
+              <br>
+							Yan Ding, Xiaohan Zhang, <strong>Saeid Amiri</strong>, Nieqing Cao, Hao Yang, Andy Kaminski, Chad Esselink,
+							<a href="http://www.cs.binghamton.edu/~szhang/" _target="blank">Shiqi Zhang</a>
+				<br>			              <br>
+              <em>Autonomous Robots Special Issue on Large Language Models in Robotics</em>, 2023
+              <br>
+                
+              <a href="https://arxiv.org/abs/2305.17590" target="_blank">paper</a>
+              
+              /
+              <a href="https://cowplanning.github.io/" target="_blank">demo</a>
+                /
+                <a href="https://cowplanning.github.io/" _target="blank">webpage</a>
+                 /
+                
+                <a href="https://github.com/yding25/GPT-Planner" _target="blank">code</a>
+                <!--
+                /
+                <a href="http://" _target="blank">poster</a>
+                -->
+                
+            </td>
+          </tr> 
+  
+            
+
+
+
+
+
+
             
             
           <tr onmouseout="sarp_stop()" onmouseover="sarp_start()">
@@ -74,25 +345,25 @@
               <div class="one">
                   
                 <div class="two" id='sarp_image'><video  width=100% height=100% muted autoplay loop>
-                <source src="">
+                <source src="images/sarp.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video></div>
-                <img src='images/.png' width="160" style="float: left;padding: 30px 0px 0px 0px">
+                <img src='images/sarp.jpg' width="160" style="float: left;padding: 30px 0px 0px 0px">
                   
               </div>
               <script type="text/javascript">
-                function gdq_start() {
+                function sarp_start() {
                   document.getElementById('sarp_image').style.opacity = "1";
                 }
 
-                function gdq_stop() {
+                function sarp_stop() {
                   document.getElementById('sarp_image').style.opacity = "0";
                 }
                 sarp_stop()
               </script>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://" target="_blank">
+              <a href="https://arxiv.org/pdf/2202.10432.pdf" target="_blank">
                 <papertitle>Reasoning with Scene Graphs for Robot Planning under Partial Observability</papertitle>
               </a>
               <br>
@@ -232,7 +503,7 @@
                 <a href="https://docs.google.com/presentation/d/11NlebTRPXObkixzpqHTJwrxPGwBqsh2Jj7f7fQqSDvg/edit?usp=sharing" _target="blank">poster</a>
               <p>Using supervised learning and automated reasoning to guide a POMDP-based symbolic planner</p>
             </td>
-
+          </tr>
             
             
           <tr onmouseout="ds_stop()" onmouseover="ds_start()">
@@ -253,7 +524,7 @@
                 }
 
                 function ds_stop() {
-                  document.getElementById('da_image').style.opacity = "0";
+                  document.getElementById('ds_image').style.opacity = "0";
                 }
                 ds_stop()
               </script>
@@ -283,7 +554,7 @@
                 /
                 <a href="https://techxplore.com/news/2019-07-dialogue-goal-oriented-human-robot-interactions.html" _target="blank">interview with Texplore</a> 
               <p></p>
-              <p>A robotic dialogue system that simultanuously identifies human intention and auigments its knowledge base.</p>
+              <p>A robotic dialogue system that simultaneously identifies human intention and augments its knowledge base.</p>
             </td>
           </tr>
         
@@ -327,7 +598,7 @@ additional source: https://www.youtube.com/watch?v=msugNV8pT9E&ab_channel=Federi
               <strong>Saeid Amiri</strong>,
               <a href="https://www.linkedin.com/in/suhuawei">Suhua Wei</a>,
               <a href="https://jessethomason.com/" _target="blank">Jesse Thomason</a>,
-              <a href="https://www.eecs.tufts.edu/~jsinapov/" _target="blank">Jivko SInapov</a>,
+              <a href="https://www.eecs.tufts.edu/~jsinapov/" target="_blank">Jivko Sinapov</a>,
               <a href="http://www.cs.binghamton.edu/~szhang/" _target="blank">Shiqi Zhang</a>,
               <a href="https://www.cs.utexas.edu/~pstone/">Peter Stone</a>
               <br>
@@ -353,7 +624,7 @@ additional source: https://www.youtube.com/watch?v=msugNV8pT9E&ab_channel=Federi
         <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
           <tr>
             <td>
-              <heading>Related Work Experience</heading>
+              <heading>Work Experience</heading>
             </td>
           </tr>
         </tbody></table>
@@ -361,7 +632,54 @@ additional source: https://www.youtube.com/watch?v=msugNV8pT9E&ab_channel=Federi
           
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-          <tr onmouseout="gdq_stop()" onmouseover="gdq_start()">
+
+          <tr onmouseout="jp_stop()" onmouseover="jp_start()">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+                
+              <div class="one">
+                  
+                <!--<div class="two" id='gdq_image'><video  width=100% height=100% muted autoplay loop>
+                <source src="images/gdq_website.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div> -->
+                <img src='images/JP-logo.jpg' width="160" style="float: left;padding: 00px 00px 40px 0px">
+                  
+              </div>
+              <script type="text/javascript">
+                function jp_start() {
+                  document.getElementById('jp_image').style.opacity = "1";
+                }
+
+                function jp_stop() {
+                  document.getElementById('jp_image').style.opacity = "0";
+                }
+                jp_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="" target="_blank">
+                <papertitle> AI Research Scientist</papertitle>
+              </a>
+              <br>
+						
+				<br>			        
+              <em>JP Morgan AI Research</em>, 2022 - Present 
+              <br>
+            
+                
+                <p>Combinatorial Optimization</p>
+            </td>
+          </tr> 
+          
+
+
+
+
+
+
+
+
+          <tr onmouseout="abb_stop()" onmouseover="abb_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
                 
               <div class="one">
@@ -386,7 +704,7 @@ additional source: https://www.youtube.com/watch?v=msugNV8pT9E&ab_channel=Federi
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="" target="_blank">
-                <papertitle>Robotics Gradute Research Intern</papertitle>
+                <papertitle>Robotics Graduate Research Intern</papertitle>
               </a>
               <br>
 						
@@ -395,11 +713,14 @@ additional source: https://www.youtube.com/watch?v=msugNV8pT9E&ab_channel=Federi
               <br>
             
                 
-                <p>Vision-bsaed grasping using deep reinforcement learning</p>
+                <p>Vision-based grasping using deep reinforcement learning</p>
             </td>
           </tr> 
             
-             <tr onmouseout="gdq_stop()" onmouseover="gdq_start()">
+
+
+
+             <tr onmouseout="fri_stop()" onmouseover="fri_start()">
             <td style="padding:20px;width:25%;vertical-align:middle">
                 
               <div class="one">

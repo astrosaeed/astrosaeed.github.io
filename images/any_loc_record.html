@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic Route Animation with Recording</title>
+    <!-- Load site configuration (contains API key) -->
+    <script src="config.js"></script>
+    <!-- Dynamically load Google Maps JS using the key from config.js -->
+    <script>
+      (function() {
+        try {
+          var key = (typeof window !== 'undefined' && window.API_KEY) || (typeof API_KEY !== 'undefined' && API_KEY) || '';
+          if (!key || key === 'YOUR_GOOGLE_MAPS_API_KEY_HERE') {
+            console.warn('Google Maps API key not set in config.js. Replace the placeholder with your real key.');
+          }
+          var s = document.createElement('script');
+          s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(key) + '&callback=initMap';
+          s.async = true;
+          s.defer = true;
+          document.head.appendChild(s);
+        } catch (e) {
+          console.error('Failed to dynamically load Google Maps script:', e);
+        }
+      })();
+    </script>
+    <style>
+      #map {
+        height: 80%;
+        width: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #controls {
+        height: 20%;
+        padding: 10px;
+        background: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #controls input {
+        margin: 5px;
+        padding: 5px;
+        width: 200px;
+      }
+      #controls button {
+        padding: 10px 20px;
+        margin: 5px;
+      }
+      #recordBtn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+      #recordBtn.recording {
+        background-color: #28a745;
+      }
+      #recordBtn:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+      }
+      #status {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+      .button-group {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="controls">
+      <input type="text" id="origin" placeholder="San José, San José Province, Costa Rica" />
+      <input type="text" id="destination" placeholder="La Paz Waterfall, Alajuela Province, Alajuela, Costa Rica" />
+      <input type="number" id="zoom" placeholder="Enter Zoom Level (e.g. 14)" value="14" />
+      <div class="button-group">
+        <button onclick="renderRoute()">Show Route</button>
+        <button id="recordBtn" onclick="toggleRecording()" disabled>⏺ Record</button>
+      </div>
+      <div id="status"></div>
+    </div>
+
+    <script>
+      var map, directionsService, directionsRenderer, routePolyline, step = 0;
+      var mediaRecorder, recordedChunks = [], isRecording = false, animationInProgress = false;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: { lat: 40.748817, lng: -73.985428 },
+          zoom: 14
+        });
+
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+      }
+
+      function renderRoute() {
+        var originInput = document.getElementById('origin').value;
+        var destinationInput = document.getElementById('destination').value;
+        var zoomLevel = parseInt(document.getElementById('zoom').value) || 14;
+
+        if (!originInput || !destinationInput) {
+          alert('Please enter both origin and destination!');
+          return;
+        }
+
+        map.setZoom(zoomLevel);
+
+        var request = {
+          origin: originInput,
+          destination: destinationInput,
+          travelMode: 'WALKING'
+        };
+
+        directionsService.route(request, function (result, status) {
+          if (status == 'OK') {
+            directionsRenderer.setDirections(result);
+            var path = result.routes[0].overview_path;
+            
+            // Enable record button once route is loaded
+            document.getElementById('recordBtn').disabled = false;
+            
+            animatePolyline(path);
+          } else {
+            alert('Unable to find the route. Please check the addresses.');
+          }
+        });
+      }
+
+      function animatePolyline(path) {
+        step = 0;
+        if (routePolyline) {
+          routePolyline.setMap(null);
+        }
+
+        routePolyline = new google.maps.Polyline({
+          path: [],
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 4,
+          map: map
+        });
+
+        var totalSteps = 100;
+        var duration = 5000;
+        var stepDuration = duration / totalSteps;
+
+        animationInProgress = true;
+
+        var interval = setInterval(function () {
+          if (step < totalSteps) {
+            step++;
+            var fraction = step / totalSteps;
+            var newPath = path.slice(0, Math.floor(fraction * path.length));
+            routePolyline.setPath(newPath);
+          } else {
+            clearInterval(interval);
+            animationInProgress = false;
+            
+            // Auto-stop recording when animation completes
+            if (isRecording) {
+              stopRecording();
+            }
+          }
+        }, stepDuration);
+      }
+
+      async function toggleRecording() {
+        if (!isRecording) {
+          await startRecording();
+        } else {
+          stopRecording();
+        }
+      }
+
+      async function startRecording() {
+        try {
+          var mapDiv = document.getElementById('map');
+          
+          // Capture the map div as a media stream
+          var stream = await navigator.mediaDevices.getDisplayMedia({
+            video: {
+              mediaSource: 'screen'
+            },
+            audio: false
+          });
+
+          recordedChunks = [];
+          mediaRecorder = new MediaRecorder(stream, {
+            mimeType: 'video/webm;codecs=vp9'
+          });
+
+          mediaRecorder.ondataavailable = function(event) {
+            if (event.data.size > 0) {
+              recordedChunks.push(event.data);
+            }
+          };
+
+          mediaRecorder.onstop = function() {
+            var blob = new Blob(recordedChunks, { type: 'video/webm' });
+            var url = URL.createObjectURL(blob);
+            
+            // Create download link
+            var a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'route-animation-' + new Date().getTime() + '.webm';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Cleanup
+            setTimeout(function() {
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            }, 100);
+            
+            updateStatus('Recording saved!');
+            
+            // Stop all tracks
+            stream.getTracks().forEach(track => track.stop());
+          };
+
+          mediaRecorder.start();
+          isRecording = true;
+          
+          var recordBtn = document.getElementById('recordBtn');
+          recordBtn.textContent = '⏹ Stop Recording';
+          recordBtn.classList.add('recording');
+          
+          updateStatus('Recording... Click "Show Route" to start animation');
+
+        } catch (err) {
+          console.error('Error starting recording:', err);
+          alert('Unable to start recording. Make sure to grant screen capture permissions.');
+        }
+      }
+
+      function stopRecording() {
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+          mediaRecorder.stop();
+          isRecording = false;
+          
+          var recordBtn = document.getElementById('recordBtn');
+          recordBtn.textContent = '⏺ Record';
+          recordBtn.classList.remove('recording');
+          
+          updateStatus('Processing recording...');
+        }
+      }
+
+      function updateStatus(message) {
+        var statusDiv = document.getElementById('status');
+        statusDiv.textContent = message;
+        
+        // Clear status after 3 seconds
+        setTimeout(function() {
+          statusDiv.textContent = '';
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
